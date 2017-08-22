@@ -31,7 +31,7 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 				foreach ( $ctc_terms as $ctc_term ) {
 					$ctc_counter[] = array(
 						"name"    => $ctc_term->name,
-						"counter" => $this->ctc_get_term_counter( $ctc_term->name, $ctc_post_type )
+						"counter" => $this->ctc_get_term_counter( $ctc_term->slug, $ctc_post_type )
 					);
 				}
 
@@ -52,8 +52,7 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 					array(
 						'taxonomy' => 'category',
 						'field'    => 'slug',
-						'terms'    => array( $term ),
-//						'operator' => 'IN'
+						'terms'    => $term,
 					)
 				),
 				'post_status' => 'publish'
