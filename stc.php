@@ -53,7 +53,6 @@ if ( ! class_exists( "SharedTaxonomyCounterFix" ) ) {
 						'terms'    => $term,
 					)
 				),
-				'post_status' => 'publish'
 			) );
 
 			return $stc_posts->post_count;
