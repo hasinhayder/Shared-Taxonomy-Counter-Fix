@@ -24,7 +24,7 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 		function ctc_load_scripts( $hook ) {
 			if ( "edit-tags.php" == $hook ) {
 				$ctc_tax_name  = $_GET['taxonomy'];
-				$ctc_post_type = isset($_GET['post_type'])?$_GET['post_type']:"post";
+				$ctc_post_type = isset( $_GET['post_type'] ) ? $_GET['post_type'] : "post";
 
 				$ctc_counter = [];
 				$ctc_terms   = $this->ctc_get_terms( $ctc_tax_name );
