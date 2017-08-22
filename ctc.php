@@ -21,21 +21,7 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 			register_activation_hook( __FILE__, array( $this, "ctc_activate" ) );
 			register_deactivation_hook( __FILE__, array( $this, "ctc_deactivate" ) );
 
-			add_action( "init", array( $this, "ctc_init" ) );
-//			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'ctc_load_scripts' ) );
-		}
-
-		function ctc_activate() {
-		}
-
-		function ctc_deactivate() {
-		}
-
-		function ctc_scripts() {
-		}
-
-		function ctc_init() {
 		}
 
 		function ctc_load_scripts( $hook ) {
