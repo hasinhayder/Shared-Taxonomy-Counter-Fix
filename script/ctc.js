@@ -1,5 +1,4 @@
 ;(function($){
-    $("tbody#the-list").hide();
     for(c in ctc.counter){
         var tax = ctc.counter[c];
         $("tbody#the-list").find("td:contains(" + tax.name + ")")
@@ -12,6 +11,5 @@
             $("tbody#the-list").find("td:contains(" + tax.name + ")").parent().remove();
         }*/
     }
-    $("tbody#the-list").show();
 })(jQuery);
 
