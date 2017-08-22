@@ -34,7 +34,7 @@ if ( ! class_exists( "SharedTaxonomyCounterFix" ) ) {
 				}
 
 				wp_enqueue_script( "jquery" );
-				wp_enqueue_script( "stc-js", plugin_dir_url( __FILE__ ) . "script/stc.js", "jquery", time(), true );
+				wp_enqueue_script( "stc-js", plugin_dir_url( __FILE__ ) . "js/stc.js", "jquery", "1.0", true );
 				wp_localize_script( "stc-js", "stc",
 					array(
 						"counter" => $stc_counter
