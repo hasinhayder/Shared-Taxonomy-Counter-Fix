@@ -11,9 +11,9 @@
 
 defined( 'ABSPATH' ) or die( "No Direct Access" );
 
-if ( ! class_exists( "SharedTaxCounterHelper" ) ) {
+if ( ! class_exists( "SharedTaxonomyCounterFix" ) ) {
 
-	class SharedTaxCounterHelper {
+	class SharedTaxonomyCounterFix {
 
 		public function __construct() {
 			add_action( 'admin_enqueue_scripts', array( $this, 'stc_load_scripts' ) );
@@ -71,6 +71,6 @@ if ( ! class_exists( "SharedTaxCounterHelper" ) ) {
 
 	}
 
-	$stc = new SharedTaxCounterHelper();
+	$stc = new SharedTaxonomyCounterFix();
 }
 
