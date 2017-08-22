@@ -4,7 +4,7 @@ This plugin fixes the taxonomy counter in WordPress admin panel if the taxonomy 
 
 Conside the following situation
 
-1. You are using **"category"** in posts as well as in a cpt **"cpt-x"**
+1. You are using **"category"** in **posts** as well as in a cpt **"cpt-x"**
 2. You have two posts, and both of them are listed in two categories *"Food"* and *"Beverage"*
 3. You have two **"cpt-x"** posts, both of them are categorized as *"Food"* 
 4. Now, when you come to the ***categories*** menu (in WP Admin Panel) you will see that *"Food"* and *"Beverage"* are shwing wrong counter as **"3"** and **"1"**, while they should be **"1"** and **"1"** for posts, and **"2"** and **"0"** for **"cpt-x"**. 
