@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: Shared Taxonomy Counter Fix
- * Plugin URI: http://onexwp.themebucket.net
+ * Plugin URI: https://github.com/hasinhayder/Shared-Taxonomy-Counter-Fix
  * Description: This plugin fixes the actual counter of taxonomoies if the taxonomy is shared, i.e used in multiple post types. This is a known bug of WordPress listed here in Trac, <a href='https://core.trac.wordpress.org/ticket/19031'>https://core.trac.wordpress.org/ticket/19031</a>, and countless times in different support sites as well as in StackExchange forums.
  * Version: 1.0
- * Author: ThemeBucket
+ * Author: Hasin Hayder From ThemeBucket
  * Author URI: http://themebucket.net
  * License: GPL
  */
