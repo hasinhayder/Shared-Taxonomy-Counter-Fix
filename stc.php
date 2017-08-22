@@ -71,6 +71,6 @@ if ( ! class_exists( "SharedTaxCounterHelper" ) ) {
 
 	}
 
-	$ch = new SharedTaxCounterHelper();
+	$stc = new SharedTaxCounterHelper();
 }
 
