@@ -38,6 +38,23 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 		function ctc_init() {
 		}
 
+		function ctc_portfolio_term_counter( $term, $cpt ) {
+			$ctc_posts = new WP_Query( array(
+				'post_type'   => $cpt,
+				'tax_query'   => array(
+					array(
+						'taxonomy' => 'category',
+						'field'    => 'slug',
+						'terms'    => array( $term ),
+//						'operator' => 'IN'
+					)
+				),
+				'post_status' => 'publish'
+			) );
+
+			return $ctc_posts->post_count;
+		}
+
 	}
 
 	$ch = new CptTaxCounterHelper();
