@@ -38,14 +38,33 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 		function ctc_init() {
 		}
 
-		function ctc_load_scripts($hook){
-			if ("edit-tags.php"==$hook){
-				wp_enqueue_script("jquery");
-				wp_enqueue_script("ctc-js",plugin_dir_url( __FILE__ )."script/ctc.js","jquery",time(),true);
+		function ctc_load_scripts( $hook ) {
+			if ( "edit-tags.php" == $hook ) {
+				$ctc_tax_name  = $_GET['taxonomy'];
+				$ctc_post_type = $_GET['post_type'];
+
+				$ctc_counter = [];
+				$ctc_terms   = $this->ctc_get_terms( $ctc_tax_name );
+				foreach ( $ctc_terms as $ctct ) {
+					$ctc_counter[] = array(
+						"name"    => $ctct->name,
+						"counter" => $this->ctc_get_term_counter( $ctct->name, $ctc_post_type )
+					);
+				}
+
+				wp_enqueue_script( "jquery" );
+				wp_enqueue_script( "ctc-js", plugin_dir_url( __FILE__ ) . "script/ctc.js", "jquery", time(), true );
+				wp_localize_script( "ctc-js", "ctc",
+					array(
+						"pt"      => $ctc_post_type,
+						"tax"     => $ctc_tax_name,
+						"counter" => $ctc_counter
+					)
+				);
 			}
 		}
 
-		function ctc_portfolio_term_counter( $term, $cpt ) {
+		function ctc_get_term_counter( $term, $cpt ) {
 			$ctc_posts = new WP_Query( array(
 				'post_type'   => $cpt,
 				'tax_query'   => array(
@@ -60,6 +79,16 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 			) );
 
 			return $ctc_posts->post_count;
+		}
+
+		function ctc_get_terms( $tax = "category" ) {
+			$ctc_terms = get_categories( array(
+				'taxonomy'   => $tax,
+				'hide_empty' => true
+
+			) );
+
+			return $ctc_terms;
 		}
 
 	}
