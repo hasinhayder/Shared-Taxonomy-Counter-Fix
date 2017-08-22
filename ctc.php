@@ -18,9 +18,6 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 	class CptTaxCounterHelper {
 
 		public function __construct() {
-			register_activation_hook( __FILE__, array( $this, "ctc_activate" ) );
-			register_deactivation_hook( __FILE__, array( $this, "ctc_deactivate" ) );
-
 			add_action( 'admin_enqueue_scripts', array( $this, 'ctc_load_scripts' ) );
 		}
 
@@ -31,10 +28,10 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 
 				$ctc_counter = [];
 				$ctc_terms   = $this->ctc_get_terms( $ctc_tax_name );
-				foreach ( $ctc_terms as $ctct ) {
+				foreach ( $ctc_terms as $ctc_term ) {
 					$ctc_counter[] = array(
-						"name"    => $ctct->name,
-						"counter" => $this->ctc_get_term_counter( $ctct->name, $ctc_post_type )
+						"name"    => $ctc_term->name,
+						"counter" => $this->ctc_get_term_counter( $ctc_term->name, $ctc_post_type )
 					);
 				}
 
@@ -42,8 +39,6 @@ if ( ! class_exists( "CptTaxCounterHelper" ) ) {
 				wp_enqueue_script( "ctc-js", plugin_dir_url( __FILE__ ) . "script/ctc.js", "jquery", time(), true );
 				wp_localize_script( "ctc-js", "ctc",
 					array(
-						"pt"      => $ctc_post_type,
-						"tax"     => $ctc_tax_name,
 						"counter" => $ctc_counter
 					)
 				);
