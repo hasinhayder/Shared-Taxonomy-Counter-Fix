@@ -1,0 +1,45 @@
+<?php
+/**
+ * Plugin Name: CptTaxCounter
+ * Plugin URI: http://onexwp.themebucket.net
+ * Description: Essential Custom Post for cpttaxcounter theme
+ * Version: 1.0
+ * Author: ThemeBucket
+ * Author URI: http://themebucket.net
+ * Text Domain: cpttaxcounter
+ * Domain Path: /languages/
+ * License: GPL2
+ */
+
+defined( 'ABSPATH' ) or die( "No Direct Access" );
+
+if ( ! class_exists( "CptTaxCounterHelper" ) ) {
+
+	class CptTaxCounterHelper {
+
+		public function __construct() {
+			register_activation_hook( __FILE__, array( $this, "ctc_activate" ) );
+			register_deactivation_hook( __FILE__, array( $this, "ctc_deactivate" ) );
+
+			add_action( "init", array( $this, "ctc_init" ) );
+			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'load_scripts' ) );
+		}
+
+		function ctc_activate() {
+		}
+
+		function ctc_deactivate() {
+		}
+
+		function ctc_scripts() {
+		}
+
+		function ctc_init() {
+		}
+
+	}
+
+	$ch = new CptTaxCounterHelper();
+}
+
